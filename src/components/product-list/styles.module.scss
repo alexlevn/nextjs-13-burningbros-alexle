@@ -1,0 +1,10 @@
+.productList {
+  @apply min-h-[150px] max-w-md mx-auto;
+  @apply text-left px-5 bg-blue-50;
+}
+
+.listWrapper {
+  @apply flex flex-col gap-3 h-[400px];
+  @apply overflow-y-scroll;
+  @apply p-5 bg-white mt-5;
+}
