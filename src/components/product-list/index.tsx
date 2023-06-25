@@ -1,11 +1,10 @@
 "use client";
 
-import styles from "./styles.module.scss";
 import { FC, useState } from "react";
-
-import FilterComponent, { FilterParams } from "./filter";
 import { Spin } from "antd";
-import ProductItem from "../product-item";
+import styles from "./styles.module.scss";
+import FilterComponent, { FilterParams } from "./filter";
+import ProductItem from "@/components/product-item";
 import useProductList from "./use-product-list";
 
 const defaultFilterParams: FilterParams = {
@@ -17,7 +16,6 @@ const defaultFilterParams: FilterParams = {
 const ProductList: FC = () => {
   const [filter, setFilter] = useState<FilterParams>(defaultFilterParams);
   const { products, loading, isEnd } = useProductList(filter);
-  // const [test, setTest] = useState("test");
 
   const inCreasePage = () => {
     setFilter((prev) => ({
@@ -34,7 +32,6 @@ const ProductList: FC = () => {
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
     const { scrollTop, clientHeight, scrollHeight } = e.currentTarget;
-    // setTest((scrollTop + clientHeight + 1).toString() + " - " + scrollHeight);
     if (scrollTop + clientHeight + 1 >= scrollHeight && !loading) {
       handleLoadMore();
     }
@@ -47,12 +44,6 @@ const ProductList: FC = () => {
   return (
     <div className={styles.productList}>
       <div>Product List</div>
-
-      {/* <div>
-        isEnd: <span className="text-red-500">{isEnd.toString()}</span>-
-        loading: <span className="text-red-500">{loading.toString()}</span>
-      </div>
-      <div>Test: {test}</div> */}
 
       <FilterComponent
         initialValues={filter}
